@@ -2,7 +2,7 @@
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size){
 	size_t	dst_size;
-	int		i;
+	size_t	i;
 
 	dst_size = -1;
 	i = 0;
