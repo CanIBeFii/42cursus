@@ -4,11 +4,10 @@ void	*ft_memchr(const void *s, int c, size_t n){
 	size_t			i;
 
 	i = 0;
-	while(*(unsigned char*)(s + i) != '\0' && 
-			*(unsigned char*)(s + i) != c && i < n){
+	while(*(unsigned char*)(s + i) != '\0' && i < n){
+		if(*(unsigned char*)(s + i) == (unsigned char)c)
+			return ((unsigned char*)(s + i));
 		i++;
 	}
-	if(*(unsigned char*)(s + i) != c || i == n)
-		return (NULL);
-	return (s + i);
+	return (NULL);
 }
