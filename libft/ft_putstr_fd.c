@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 10:58:29 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 12:06:30 by fialexan         ###   ########.fr       */
+/*   Created: 2022/02/17 12:14:28 by fialexan          #+#    #+#             */
+/*   Updated: 2022/02/17 12:17:14 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (-1 < c && c < 128)
-		return (1);
-	return (0);
+	int	i;
+
+	i = -1;
+	while (s[++i] != '\0')
+		ft_putchar_fd(s[i], fd);
 }

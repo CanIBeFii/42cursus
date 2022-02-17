@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 10:40:48 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 12:07:08 by fialexan         ###   ########.fr       */
+/*   Created: 2022/02/17 12:32:59 by fialexan          #+#    #+#             */
+/*   Updated: 2022/02/17 12:39:40 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	numsize(int n)
+static int	putnbr_numsize(int n)
 {
 	int			size;
 	size_t		num;
@@ -34,16 +34,13 @@ static int	numsize(int n)
 	return (size);
 }
 
-char	*ft_itoa(int n)
+char	*putnbr_itoa(int n)
 {
-	char		*str;
+	char		str[12];
 	int			size;
 	size_t		num;
 
-	size = numsize(n);
-	str = (char *)malloc(sizeof(char) * (size + 1));
-	if (!str)
-		return (NULL);
+	size = putnbr_numsize(n);
 	num = n;
 	if (num < 0)
 		str[0] = '-';
@@ -53,6 +50,16 @@ char	*ft_itoa(int n)
 		num = num / 10;
 		size--;
 	}
-	str[numsize(n)] = '\0';
+	str[putnbr_numsize(n)] = '\0';
 	return (str);
+}
+
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	size_t	num;
+	char	str[12];
+
+	str = putnbr_itoa(n);
+	ft_putstr_fd(str, fd);
 }
