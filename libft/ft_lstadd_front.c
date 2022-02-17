@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 10:58:12 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 13:38:37 by fialexan         ###   ########.fr       */
+/*   Created: 2022/02/17 13:03:42 by fialexan          #+#    #+#             */
+/*   Updated: 2022/02/17 13:09:13 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if ((64 < c && c < 91) || (96 < c && c < 123))
-		return (1);
-	return (0);
+	new->next = *lst;
+	*lst = new;
 }

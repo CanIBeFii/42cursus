@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:32:59 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 12:39:40 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:45:13 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	putnbr_numsize(int n)
 	return (size);
 }
 
-char	*putnbr_itoa(int n)
+void	ft_putnbr_fd(int n, int fd)
 {
 	char		str[12];
 	int			size;
@@ -51,15 +51,5 @@ char	*putnbr_itoa(int n)
 		size--;
 	}
 	str[putnbr_numsize(n)] = '\0';
-	return (str);
-}
-
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	size_t	num;
-	char	str[12];
-
-	str = putnbr_itoa(n);
 	ft_putstr_fd(str, fd);
 }

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 10:58:12 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 13:38:37 by fialexan         ###   ########.fr       */
+/*   Created: 2022/02/17 13:16:27 by fialexan          #+#    #+#             */
+/*   Updated: 2022/02/17 13:18:16 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if ((64 < c && c < 91) || (96 < c && c < 123))
-		return (1);
-	return (0);
+	t_list	*index;
+
+	index = lst;
+	while (index->next != NULL)
+		index = index->next;
+	return (index);
 }
