@@ -1,12 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/17 10:44:03 by fialexan          #+#    #+#             */
+/*   Updated: 2022/02/17 13:47:43 by fialexan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_isspace(int c){
-	if(c == ' ' || (8 < c && c < 14))
+int	ft_isspace(int c)
+{
+	if (c == ' ' || (8 < c && c < 14))
 		return (1);
 	return (0);
 }
 
-int	ft_atoi(const char *ptr){
+int	ft_atoi(const char *ptr)
+{
 	int	i;
 	int	signal;
 	int	res;
@@ -14,16 +28,18 @@ int	ft_atoi(const char *ptr){
 	i = 0;
 	signal = 1;
 	res = 0;
-	while(ptr[i] != '\0' || ft_isspace(ptr[i]))
+	while (ptr[i] != '\0' || ft_isspace(ptr[i]))
 		i++;
-	while(ptr[i] != '\0' && (ptr[i] == '+' || ptr[i] == '-')){
-		if(ptr[i + 1] == '-' || ptr[i + 1] == '+')
+	while (ptr[i] != '\0' && (ptr[i] == '+' || ptr[i] == '-'))
+	{
+		if (ptr[i + 1] == '-' || ptr[i + 1] == '+')
 			return (0);
-		if(ptr[i] == '-')
+		if (ptr[i] == '-')
 			signal *= -1;
 		i++;
 	}
-	while(ft_isdigit(ptr[i])){
+	while (ft_isdigit(ptr[i]))
+	{
 		res *= 10;
 		res += ptr[i] - '0';
 		i++;
