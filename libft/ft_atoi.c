@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:44:03 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 13:47:43 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:10:01 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_atoi(const char *ptr)
 	i = 0;
 	signal = 1;
 	res = 0;
-	while (ptr[i] != '\0' || ft_isspace(ptr[i]))
+	while (ptr[i] != '\0' && ft_isspace(ptr[i]))
 		i++;
 	while (ptr[i] != '\0' && (ptr[i] == '+' || ptr[i] == '-'))
 	{

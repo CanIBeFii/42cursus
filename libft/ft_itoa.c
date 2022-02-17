@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:40:48 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 12:07:08 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/02/17 18:44:05 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	numsize(int n)
 		return (1);
 	num = n;
 	size = 0;
-	if (num < 0)
+	if (n < 0)
 	{
 		size++;
 		num *= -1;
@@ -45,7 +45,7 @@ char	*ft_itoa(int n)
 	if (!str)
 		return (NULL);
 	num = n;
-	if (num < 0)
+	if (n < 0)
 		str[0] = '-';
 	while (num > 0)
 	{
