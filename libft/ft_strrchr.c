@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 11:11:18 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 11:11:55 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/02/18 09:12:13 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strrchr(const char *s, int c)
 			ret = i;
 		i++;
 	}
-	if (i != -1)
+	if (ret != -1)
 		return ((char *)s + ret);
 	return (NULL);
 }
