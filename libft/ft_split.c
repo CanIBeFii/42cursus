@@ -1,13 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/18 09:55:40 by fialexan          #+#    #+#             */
+/*   Updated: 2022/02/18 09:55:59 by fialexan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static int ft_split_counter(char *s, char c){
+static int	ft_split_counter(char *s, char c)
+{
 	size_t	i;
 	size_t	res;
 
 	i = 0;
 	res = 2;
-	while(s[i] != '\0'){
-		if(s[i] == c)
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
 			res++;
 		i++;
 	}
@@ -41,13 +55,14 @@ static int	*ft_split_str_counter(char *s, char c, size_t delim)
 	return (ret);
 }
 
-static char *ft_the_spliter(char *s, size_t index, int *str_size)
+static char	*ft_the_spliter(char *s, size_t index, int *str_size)
 {
 	int		i;
 	size_t	e;
 	char	*str;
 
 	i = -1;
+	e = 0;
 	while (++i < (int)index)
 		e += str_size[i] + 1;
 	i = 0;

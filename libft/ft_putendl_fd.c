@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:18:10 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 12:20:25 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/02/18 10:27:30 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\0', fd);
+	ft_putchar_fd('\n', fd);
 }
