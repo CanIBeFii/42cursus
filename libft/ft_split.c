@@ -6,92 +6,70 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 09:55:40 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/18 09:55:59 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/02/18 13:26:31 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_split_counter(char *s, char c)
+static size_t	delim_counter(char *s, char c)
 {
-	size_t	i;
-	size_t	res;
-
-	i = 0;
-	res = 2;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			res++;
-		i++;
-	}
-	return (res);
-}
-
-static int	*ft_split_str_counter(char *s, char c, size_t delim)
-{
-	int		*ret;
-	size_t	i;
-	size_t	e;
 	size_t	count;
+	size_t	i;
 
-	i = -1;
+	i = 0;
 	count = 0;
-	e = 0;
-	ret = (int *)malloc(sizeof(int) * (delim - 1));
-	if (!ret)
-		return (ret);
-	while (s[++i] != '\0')
+	while (s[i])
 	{
 		if (s[i] == c)
-		{
-			ret[e] = count;
-			e++;
-			count = 0;
-		}
-		else
 			count++;
-	}
-	return (ret);
-}
-
-static char	*ft_the_spliter(char *s, size_t index, int *str_size)
-{
-	int		i;
-	size_t	e;
-	char	*str;
-
-	i = -1;
-	e = 0;
-	while (++i < (int)index)
-		e += str_size[i] + 1;
-	i = 0;
-	str = (char *)malloc(sizeof(char) * (str_size[index] + 1));
-	while (i < str_size[i])
-	{
-		str[i] = s[e + i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (count + 1);
+}
+
+// Tens de eliminar os C da string para poderes contar as cenas bem
+
+static char	**split_str(char *str, char **ret, char c)
+{
+	size_t	i;
+	size_t	e;
+	size_t	str_size;
+	size_t	counter;
+
+	counter = 0;
+	e = 0;
+	i = 0;
+	str_size = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+		{
+			ret[counter] = (char *)malloc(sizeof(char) * (str_size + 1));
+			ft_strlcpy(ret[counter], &str[e], i - e);
+			e = i + 1;
+			counter++;
+		}
+		i++;
+	}
+	ret[counter] = (char *)malloc(sizeof(char) * (str_size + 1));
+	ft_strlcpy(ret[counter], &str[e], i - e);
+	ret[counter + 1] = (char *)malloc(sizeof(char));
+	ret[counter + 1] = NULL;
+	return (ret);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	delim;
-	int		*str_size;
-	size_t	i;
+	char	*str;
 	char	**ret;
+	size_t	c_count;
+	size_t	i;
 
-	i = -1;
-	delim = ft_split_counter((char *)s, c);
-	str_size = ft_split_str_counter((char *)s, c, delim);
-	ret = (char **)malloc(sizeof(char *) * (delim));
-	if (!ret)
-		return (NULL);
-	while (++i < delim - 1)
-		ret[i] = ft_the_spliter((char *)s, i, str_size);
-	ret[i] = NULL;
-	free(str_size);
+	i = 0;
+	str = (char *)s;
+	c_count = delim_counter(str, c);
+	ret = (char **)malloc(sizeof(char *) * (c_count + 1));
+	ret = split_str(str, ret, c);
 	return (ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:44:03 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 19:10:01 by filipe           ###   ########.fr       */
+/*   Updated: 2022/02/18 11:43:04 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isspace(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *ptr)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	signal;
@@ -28,20 +28,20 @@ int	ft_atoi(const char *ptr)
 	i = 0;
 	signal = 1;
 	res = 0;
-	while (ptr[i] != '\0' && ft_isspace(ptr[i]))
+	while (str[i] != '\0' && ft_isspace(str[i]))
 		i++;
-	while (ptr[i] != '\0' && (ptr[i] == '+' || ptr[i] == '-'))
+	while (str[i] != '\0' && (str[i] == '+' || str[i] == '-'))
 	{
-		if (ptr[i + 1] == '-' || ptr[i + 1] == '+')
+		if (str[i + 1] == '-' || str[i + 1] == '+')
 			return (0);
-		if (ptr[i] == '-')
+		if (str[i] == '-')
 			signal *= -1;
 		i++;
 	}
-	while (ft_isdigit(ptr[i]))
+	while (ft_isdigit(str[i]))
 	{
 		res *= 10;
-		res += ptr[i] - '0';
+		res += str[i] - '0';
 		i++;
 	}
 	return (signal * res);

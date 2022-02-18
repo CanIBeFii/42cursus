@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:40:48 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 18:44:05 by filipe           ###   ########.fr       */
+/*   Updated: 2022/02/18 12:25:51 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,43 @@
 
 static int	numsize(int n)
 {
-	int			size;
-	size_t		num;
+	if (n < 0)
+		return (2 + numsize(-(n / 10)));
+	if (n > 9)
+		return (1 + numsize(n / 10));
+	return (1);
+}
 
-	if (n == 0)
-		return (1);
-	num = n;
-	size = 0;
+static void	num_to_char(char *str, int n, int index)
+{
+	if (index == -1)
+		return ;
 	if (n < 0)
 	{
-		size++;
-		num *= -1;
+		str[0] = '-';
+		str[index] = -(n % 10) + '0';
+		num_to_char(str, -(n / 10), index - 1);
+		return ;
 	}
-	while (num > 0)
+	if (n > 9)
 	{
-		size++;
-		num = num / 10;
+		str[index] = n % 10 + '0';
+		num_to_char(str, n / 10, index - 1);
+		return ;
 	}
-	return (size);
+	str[index] = n % 10 + '0';
 }
 
 char	*ft_itoa(int n)
 {
-	char		*str;
-	int			size;
-	size_t		num;
+	char	*str;
+	int		size;
 
 	size = numsize(n);
 	str = (char *)malloc(sizeof(char) * (size + 1));
 	if (!str)
 		return (NULL);
-	num = n;
-	if (n < 0)
-		str[0] = '-';
-	while (num > 0)
-	{
-		str[size - 2] = num % 10;
-		num = num / 10;
-		size--;
-	}
-	str[numsize(n)] = '\0';
+	num_to_char(str, n, size - 1);
+	str[size] = '\0';
 	return (str);
 }
