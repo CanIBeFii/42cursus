@@ -3,53 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:32:59 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 18:48:31 by filipe           ###   ########.fr       */
+/*   Updated: 2022/02/18 11:10:04 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	putnbr_numsize(int n)
-{
-	int			size;
-	size_t		num;
-
-	if (n == 0)
-		return (1);
-	num = n;
-	size = 0;
-	if (n < 0)
-	{
-		size++;
-		num *= -1;
-	}
-	while (num > 0)
-	{
-		size++;
-		num = num / 10;
-	}
-	return (size);
-}
-
 void	ft_putnbr_fd(int n, int fd)
 {
-	char		str[12];
-	int			size;
-	size_t		num;
+	long	num;
 
-	size = putnbr_numsize(n);
 	num = n;
-	if (n < 0)
-		str[0] = '-';
-	while (num > 0)
+	if (num < 0)
 	{
-		str[size - 2] = num % 10;
-		num = num / 10;
-		size--;
+		ft_putchar_fd('-', fd);
+		num *= -1;
 	}
-	str[putnbr_numsize(n)] = '\0';
-	ft_putstr_fd(str, fd);
+	if (num > 9)
+		ft_putnbr_fd(num / 10, fd);
+	ft_putchar_fd((num % 10) + '0', fd);
 }
