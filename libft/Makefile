@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: filipe <filipe@student.42.fr>              +#+  +:+       +#+         #
+#    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 12:27:56 by fialexan          #+#    #+#              #
-#    Updated: 2022/02/17 18:40:22 by filipe           ###   ########.fr        #
+#    Updated: 2022/02/28 15:27:52 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,5 +44,5 @@ fclean: clean
 re:
 	fclean all
 
-bonus:
+bonus: $(OBJS) $(BONUS_OBJS)
 	ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)

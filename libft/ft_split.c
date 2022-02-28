@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 09:55:40 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/28 15:18:38 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:30:47 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,3 @@ char	**ft_split(char const *s, char c)
 	str[i] = NULL;
 	return (str);
 }
-
-
-// int main()
-// {
-// 	char **tab = ft_split("  tripouille  42  ", ' ');
-// 	for (int i = 0; tab[i] != NULL; i++)
-// 	{
-// 		printf("A str e = .%s.\n", tab[i]);
-// 	}
-// 	return (0);
-// }

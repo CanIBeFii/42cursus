@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 13:13:18 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 13:15:51 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:32:18 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_lstsize(t_list *lst)
 
 	i = 0;
 	index = lst;
-	while (index->next != NULL)
+	while (index != NULL)
 	{
 		i++;
 		index = index->next;
