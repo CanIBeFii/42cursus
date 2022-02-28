@@ -6,70 +6,103 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 09:55:40 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/18 13:26:31 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:18:38 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	delim_counter(char *s, char c)
+static int	get_array_size(char *s, char c)
 {
-	size_t	count;
-	size_t	i;
+	int	i;
+	int	control;
+	int	size;
 
 	i = 0;
-	count = 0;
-	while (s[i])
+	control = 0;
+	size = 0;
+	while (s[i] != '\0')
 	{
-		if (s[i] == c)
-			count++;
+		if (s[i] != c && control == 0)
+		{
+			control = 1;
+			size++;
+		}
+		else if (s[i] == c)
+			control = 0;
 		i++;
 	}
-	return (count + 1);
+	return (size);
 }
 
-// Tens de eliminar os C da string para poderes contar as cenas bem
-
-static char	**split_str(char *str, char **ret, char c)
+static char	*get_str(char *s, int begin, int end)
 {
-	size_t	i;
-	size_t	e;
-	size_t	str_size;
-	size_t	counter;
+	char	*str;
+	int		i;
 
-	counter = 0;
-	e = 0;
 	i = 0;
-	str_size = 0;
-	while (str[i])
+	str = (char *)malloc(sizeof(char) * (end - begin + 1));
+	if (!str)
+		return (NULL);
+	while (begin < end)
 	{
-		if (str[i] == c)
-		{
-			ret[counter] = (char *)malloc(sizeof(char) * (str_size + 1));
-			ft_strlcpy(ret[counter], &str[e], i - e);
-			e = i + 1;
-			counter++;
-		}
+		str[i] = s[begin];
 		i++;
+		begin++;
 	}
-	ret[counter] = (char *)malloc(sizeof(char) * (str_size + 1));
-	ft_strlcpy(ret[counter], &str[e], i - e);
-	ret[counter + 1] = (char *)malloc(sizeof(char));
-	ret[counter + 1] = NULL;
-	return (ret);
+	str[i] = '\0';
+	return (str);
+}
+
+static int	get_end(char *s, int end, char c)
+{
+	while (s[end] != c && s[end] != '\0')
+		end++;
+	return (end);
+}
+
+static int	get_begin(char *s, int begin, char c)
+{
+	while (s[begin] == c && s[begin] != '\0')
+		begin++;
+	return (begin);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	*str;
-	char	**ret;
-	size_t	c_count;
-	size_t	i;
+	int		array_size;
+	char	**str;
+	int		i;
+	int		begin;
+	int		end;
 
+	if (!s)
+		return (NULL);
+	array_size = get_array_size((char *)s, c);
+	str = (char **)malloc(sizeof(char *) * (array_size + 1));
+	if (!str)
+		return (NULL);
 	i = 0;
-	str = (char *)s;
-	c_count = delim_counter(str, c);
-	ret = (char **)malloc(sizeof(char *) * (c_count + 1));
-	ret = split_str(str, ret, c);
-	return (ret);
+	end = 0;
+	begin = 0;
+	while (i < array_size)
+	{
+		begin = get_begin((char *)s, end, c);
+		end = get_end((char *)s, begin, c);
+		str[i] = get_str((char *)s, begin, end);
+		i++;
+	}
+	str[i] = NULL;
+	return (str);
 }
+
+
+// int main()
+// {
+// 	char **tab = ft_split("  tripouille  42  ", ' ');
+// 	for (int i = 0; tab[i] != NULL; i++)
+// 	{
+// 		printf("A str e = .%s.\n", tab[i]);
+// 	}
+// 	return (0);
+// }

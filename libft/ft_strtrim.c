@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 11:12:04 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 11:13:09 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/02/28 09:17:36 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (*(char *)(s1 + begin) != '\0' &&
 		ft_check(*(char*)(s1 + begin), (char*)set))
 		begin++;
-	while (end > begin && ft_check(*(char *)(s1 + end), (char *)set))
+	while (end > begin && ft_check(*(char *)(s1 + end - 1), (char *)set))
 		end--;
-	str = (char *)malloc(sizeof(char) * (end - begin + 1));
+	str = (char *)malloc(sizeof(char) * (end - begin));
 	if (!str)
 		return (NULL);
-	ft_strlcpy(str, (char *)(s1 + begin), end - begin);
+	ft_strlcpy(str, (char *)(s1 + begin), end - begin + 1);
 	return (str);
 }
