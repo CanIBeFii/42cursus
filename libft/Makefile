@@ -6,7 +6,7 @@
 #    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 12:27:56 by fialexan          #+#    #+#              #
-#    Updated: 2022/02/28 15:27:52 by fialexan         ###   ########.fr        #
+#    Updated: 2022/03/01 12:44:46 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SCRS = ft_isalpha.c ft_isdigit.c ft_isascii.c ft_isalnum.c ft_isprint.c ft_bzero
 		ft_putnbr_fd.c ft_atoi.c ft_split.c
 OBJS = $(SCRS:.c=.o)
 
-BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c
+BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
+		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 BONUS_OBJS = $(BONUS:.c=.o)
 

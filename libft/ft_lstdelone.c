@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 13:26:16 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 13:27:10 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/03/01 12:25:32 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	
+	if (!lst)
+		return ;
+	if (del)
+		del(lst->content);
+	free(lst);
 }
