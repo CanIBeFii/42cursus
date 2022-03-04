@@ -39,7 +39,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		begin++;
 	while (end > begin && ft_check(*(char *)(s1 + end - 1), (char *)set))
 		end--;
-	str = (char *)malloc(sizeof(char) * (end - begin));
+	str = (char *)malloc(sizeof(char) * (end - begin + 1));
 	if (!str)
 		return (NULL);
 	ft_strlcpy(str, (char *)(s1 + begin), end - begin + 1);

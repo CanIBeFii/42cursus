@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 11:09:43 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 11:10:20 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/03/04 15:11:25 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*un_s1;
+	unsigned char	*un_s2;
 
+	un_s1 = (unsigned char *)s1;
+	un_s2 = (unsigned char *)s2;
 	i = 0;
 	if (n == 0)
 		return (0);
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0'
+	while (un_s1[i] == un_s2[i] && un_s1[i] != '\0' && un_s2[i] != '\0'
 		&& i < n - 1)
 				i++;
-	return (s1[i] - s2[i]);
+	return (un_s1[i] - un_s2[i]);
 }
