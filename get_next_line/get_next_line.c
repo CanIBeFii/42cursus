@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:39:23 by fialexan          #+#    #+#             */
-/*   Updated: 2022/03/04 11:14:34 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:26:25 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		index_s2++;
 	}
 	free(s2);
+	tmp[index_s1 + index_s2] = '\0';
 	return (tmp);
 }
 
@@ -116,10 +117,16 @@ char	*get_next_line(int fd)
 	while (index == -1)
 	{
 		tmp = ft_read(fd);
-		if (!tmp && !str)
-			return (NULL);
+		if (!tmp)
+		{
+			if (str)
+				index = ft_strlen(str);
+			else
+				return (NULL);
+		}
 		str = ft_strjoin(str, tmp);
 		index = ft_findchar(str, '\n');
+		// printf("A string esta assim =%s\n", str);
 	}
 	ret = ft_strbreak(str, index);
 	return (ret);
@@ -131,16 +138,8 @@ char	*get_next_line(int fd)
 // {
 // 	int	fd;
 
-// 	fd = open("test.txt", O_RDWR);
+// 	fd = open("/Users/fialexan/42cursus/get_next_line/test.txt", O_RDONLY);
 // 	printf("deu open e o fd=%d\n", fd);
-// 	get_next_line(fd);
-// 	get_next_line(fd);
-// 	get_next_line(fd);
-// 	get_next_line(fd);
-// 	get_next_line(fd);
-// 	get_next_line(fd);
-// 	get_next_line(fd);
-// 	get_next_line(fd);
 // 	get_next_line(fd);
 // 	get_next_line(fd);
 // 	close(fd);
