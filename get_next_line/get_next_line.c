@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:39:23 by fialexan          #+#    #+#             */
-/*   Updated: 2022/03/07 11:26:25 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/03/08 10:19:13 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ char	*get_next_line(int fd)
 				index = ft_strlen(str);
 			else
 				return (NULL);
+			continue ;
 		}
 		str = ft_strjoin(str, tmp);
 		index = ft_findchar(str, '\n');
