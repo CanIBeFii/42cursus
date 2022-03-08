@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:39:23 by fialexan          #+#    #+#             */
-/*   Updated: 2022/03/08 10:19:13 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:12:48 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,45 +32,26 @@ char	*ft_read(int fd)
 	return (str);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*tmp;
-	size_t	index_s1;
-	size_t	index_s2;
-
-	index_s1 = 0;
-	index_s2 = 0;
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!tmp)
-		return (NULL);
-	while (s1 && s1[index_s1])
-	{
-		tmp[index_s1] = s1[index_s1];
-		index_s1++;
-	}
-	free(s1);
-	while (s2 && s2[index_s2])
-	{
-		tmp[index_s1 + index_s2] = s2[index_s2];
-		index_s2++;
-	}
-	free(s2);
-	tmp[index_s1 + index_s2] = '\0';
-	return (tmp);
-}
-
-size_t	ft_findchar(char *str, char c)
+char	*ft_get_before_endl(char *str)
 {
 	size_t	index;
-
+	size_t	i;
+	char	*tmp;
+	
 	index = 0;
-	while (str[index])
-	{
-		if (str[index] == c)
-			return (index);
+	while (str[index] && str[index] != '\n')
 		index++;
+	tmp = (char *)malloc(sizeof(char) * (index + 1));
+	if (!tmp)
+		return (NULL);
+	i = 0;
+	while (i <= index)
+	{
+		tmp[i] = str[i];
+		i++;
 	}
-	return (-1);
+	tmp[i] = '\0';
+	return (tmp);
 }
 
 char	*ft_strbreak(char *str, size_t size)
@@ -87,7 +68,7 @@ char	*ft_strbreak(char *str, size_t size)
 	if (size == 0)
 		ret = (char *)malloc(sizeof(char) * (2));
 	else
-		ret = (char *)malloc(sizeof(char) * (size + 1));
+		ret = (char *)malloc(sizeof(char) * (size));
 	if (!ret)
 		return (NULL);
 	tmp = (char *)malloc(sizeof(char) * (str_len - size + 1));
@@ -99,7 +80,6 @@ char	*ft_strbreak(char *str, size_t size)
 	while (++index2 + index1 < str_len)
 		tmp[index2] = str[index1 + index2];
 	tmp[index2] = '\0';
-	free(str);
 	str = tmp;
 	return (ret);
 }
@@ -125,7 +105,8 @@ char	*get_next_line(int fd)
 				return (NULL);
 			continue ;
 		}
-		str = ft_strjoin(str, tmp);
+		ret = str;
+		str = ft_strjoin(ret, tmp);
 		index = ft_findchar(str, '\n');
 		// printf("A string esta assim =%s\n", str);
 	}
@@ -133,16 +114,16 @@ char	*get_next_line(int fd)
 	return (ret);
 }
 
-// #include <fcntl.h>
+#include <fcntl.h>
 
-// int main(void)
-// {
-// 	int	fd;
+int main(void)
+{
+	int	fd;
 
-// 	fd = open("/Users/fialexan/42cursus/get_next_line/test.txt", O_RDONLY);
-// 	printf("deu open e o fd=%d\n", fd);
-// 	get_next_line(fd);
-// 	get_next_line(fd);
-// 	close(fd);
-// 	return (0);
-// }
+	fd = open("/home/filipe/GitHub/42cursus/get_next_line/gnlTester/files/nl", O_RDONLY);
+	printf("deu open e o fd=%d\n", fd);
+	get_next_line(fd);
+	get_next_line(fd);
+	close(fd);
+	return (0);
+}
