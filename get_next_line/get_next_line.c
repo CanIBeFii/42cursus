@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:39:23 by fialexan          #+#    #+#             */
-/*   Updated: 2022/03/08 13:12:48 by filipe           ###   ########.fr       */
+/*   Updated: 2022/03/08 13:47:46 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ char	*ft_get_before_endl(char *str)
 	size_t	index;
 	size_t	i;
 	char	*tmp;
-	
+
 	index = 0;
 	while (str[index] && str[index] != '\n')
 		index++;
-	tmp = (char *)malloc(sizeof(char) * (index + 1));
+	tmp = (char *)malloc(sizeof(char) * (index + 2));
 	if (!tmp)
 		return (NULL);
 	i = 0;
@@ -54,47 +54,68 @@ char	*ft_get_before_endl(char *str)
 	return (tmp);
 }
 
-char	*ft_strbreak(char *str, size_t size)
+char	*ft_get_after_endl(char *str)
 {
-	char	*ret;
+	size_t	start;
+	size_t	i;
 	char	*tmp;
-	size_t	index1;
-	size_t	index2;
-	size_t	str_len;
 
-	index1 = -1;
-	index2 = -1;
-	str_len = ft_strlen(str);
-	if (size == 0)
-		ret = (char *)malloc(sizeof(char) * (2));
-	else
-		ret = (char *)malloc(sizeof(char) * (size));
-	if (!ret)
-		return (NULL);
-	tmp = (char *)malloc(sizeof(char) * (str_len - size + 1));
+	start = 0;
+	i = 0;
+	while (str[start] && str[start] != '\n')
+		start++;
+	start++;
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) - start + 1));
 	if (!tmp)
 		return (NULL);
-	while (++index1 <= size)
-		ret[index1] = str[index1];
-	ret[index1] = '\0';
-	while (++index2 + index1 < str_len)
-		tmp[index2] = str[index1 + index2];
-	tmp[index2] = '\0';
-	str = tmp;
-	return (ret);
+	while (str[start + i])
+	{
+		tmp[i] = str[start + i];
+		i++;
+	}
+	tmp[start + i] = '\0';
+	return (tmp);
 }
+
+// char	*ft_strbreak(char *str, size_t size)
+// {
+// 	char	*ret;
+// 	char	*tmp;
+// 	size_t	index1;
+// 	size_t	index2;
+// 	size_t	str_len;
+
+// 	index1 = -1;
+// 	index2 = -1;
+// 	str_len = ft_strlen(str);
+// 	if (size == 0)
+// 		ret = (char *)malloc(sizeof(char) * (2));
+// 	else
+// 		ret = (char *)malloc(sizeof(char) * (size));
+// 	if (!ret)
+// 		return (NULL);
+// 	tmp = (char *)malloc(sizeof(char) * (str_len - size + 1));
+// 	if (!tmp)
+// 		return (NULL);
+// 	while (++index1 <= size)
+// 		ret[index1] = str[index1];
+// 	ret[index1] = '\0';
+// 	while (++index2 + index1 < str_len)
+// 		tmp[index2] = str[index1 + index2];
+// 	tmp[index2] = '\0';
+// 	str = tmp;
+// 	return (ret);
+// }
 
 char	*get_next_line(int fd)
 {
 	static char	*str;
 	char		*tmp;
 	char		*ret;
-	long		index;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	index = -1;
-	while (index == -1)
+	while (ft_findchar(str, '\n'))
 	{
 		tmp = ft_read(fd);
 		if (!tmp)
@@ -107,8 +128,6 @@ char	*get_next_line(int fd)
 		}
 		ret = str;
 		str = ft_strjoin(ret, tmp);
-		index = ft_findchar(str, '\n');
-		// printf("A string esta assim =%s\n", str);
 	}
 	ret = ft_strbreak(str, index);
 	return (ret);

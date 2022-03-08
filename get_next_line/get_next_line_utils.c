@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:39:26 by fialexan          #+#    #+#             */
-/*   Updated: 2022/03/08 13:02:40 by filipe           ###   ########.fr       */
+/*   Updated: 2022/03/08 13:48:06 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ size_t	ft_findchar(char *str, char c)
 	while (str[index])
 	{
 		if (str[index] == c)
-			return (index);
+			return (index + 1);
 		index++;
 	}
-	return (-1);
+	return (0);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -46,10 +46,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	index_s1 = 0;
 	index_s2 = 0;
-	
-	int i = ft_strlen(s1);
-	int e = ft_strlen(s2);
-	tmp = (char *)malloc(sizeof(char) * (i + e + 1));
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!tmp)
 		return (NULL);
 	while (s1 && s1[index_s1])
