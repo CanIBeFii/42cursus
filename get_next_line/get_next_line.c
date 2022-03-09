@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:39:23 by fialexan          #+#    #+#             */
-/*   Updated: 2022/03/08 13:47:46 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/03/09 14:07:56 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,30 @@ char	*ft_get_after_endl(char *str)
 		tmp[i] = str[start + i];
 		i++;
 	}
+	free(str);
 	tmp[start + i] = '\0';
 	return (tmp);
 }
 
+char	*ft_read_next_line(char *str, int fd)
+{
+	char	*tmp;
+	char	*ptr;
+	char	*ret;
+
+	ret = str;
+	while (!ft_findchar(ret, '\n'))
+	{
+		tmp = ft_read(fd);
+		if (!tmp)
+			return (ret);
+		ptr = ret;
+		ret = ft_strjoin(ptr, tmp);
+		free(ptr);
+		free(tmp);
+	}
+	return (ret);
+}
 // char	*ft_strbreak(char *str, size_t size)
 // {
 // 	char	*ret;
@@ -107,6 +127,33 @@ char	*ft_get_after_endl(char *str)
 // 	return (ret);
 // }
 
+// char	*get_next_line(int fd)
+// {
+// 	static char	*str;
+// 	char		*tmp;
+// 	char		*ret;
+// 	size_t		index;
+
+// 	if (fd < 0 || BUFFER_SIZE < 1)
+// 		return (NULL);
+// 	while (ft_findchar(str, '\n'))
+// 	{
+// 		tmp = ft_read(fd);
+// 		if (!tmp)
+// 		{
+// 			if (str)
+// 				index = ft_strlen(str);
+// 			else
+// 				return (NULL);
+// 			continue ;
+// 		}
+// 		ret = str;
+// 		str = ft_strjoin(ret, tmp);
+// 	}
+// 	ret = ft_strbreak(str, index);
+// 	return (ret);
+// }
+
 char	*get_next_line(int fd)
 {
 	static char	*str;
@@ -115,21 +162,20 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	while (ft_findchar(str, '\n'))
-	{
-		tmp = ft_read(fd);
-		if (!tmp)
-		{
-			if (str)
-				index = ft_strlen(str);
-			else
-				return (NULL);
-			continue ;
-		}
-		ret = str;
-		str = ft_strjoin(ret, tmp);
-	}
-	ret = ft_strbreak(str, index);
+	tmp = ft_read(fd);
+	ret = str;
+	str = ft_strjoin(ret, tmp);
+	if (tmp)
+		free(tmp);
+	if (ret)
+		free(ret);
+	if (!str || str[0] == '\0')
+		return (NULL);
+	if (!ft_findchar(str, '\n'))
+		str = ft_read_next_line(str, fd);
+	ret = ft_get_before_endl(str);
+	tmp = str;
+	str = ft_get_after_endl(tmp);
 	return (ret);
 }
 
@@ -139,10 +185,9 @@ int main(void)
 {
 	int	fd;
 
-	fd = open("/home/filipe/GitHub/42cursus/get_next_line/gnlTester/files/nl", O_RDONLY);
-	printf("deu open e o fd=%d\n", fd);
-	get_next_line(fd);
-	get_next_line(fd);
+	fd = open("/Users/fialexan/42cursus/get_next_line/gnlTester/files/41_no_nl", O_RDONLY);
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
 	close(fd);
 	return (0);
 }

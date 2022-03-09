@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:39:26 by fialexan          #+#    #+#             */
-/*   Updated: 2022/03/08 13:48:06 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/03/09 09:48:12 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		tmp[index_s1 + index_s2] = s2[index_s2];
 		index_s2++;
 	}
-	free(s2);
 	tmp[index_s1 + index_s2] = '\0';
 	return (tmp);
 }
