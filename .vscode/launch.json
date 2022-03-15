@@ -10,7 +10,7 @@
             "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/Users/fialexan/42cursus/get_next_line/a.out",
+            "program": "/Users/fialexan/42cursus/get_next_line/out",
             //"program": "enter program name, for example ${workspaceFolder}/a.out",
             "args": ["1 3 3 2 3 1 2 3 1 2 3 2 2 1 2 3"],
             //"args": [],

@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:39:23 by fialexan          #+#    #+#             */
-/*   Updated: 2022/03/09 14:07:56 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/03/15 11:43:20 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_read(int fd)
 	char	*str;
 	size_t	size_read;
 
-	str = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	str = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!str)
 		return (NULL);
 	size_read = read(fd, str, BUFFER_SIZE);
@@ -32,56 +32,56 @@ char	*ft_read(int fd)
 	return (str);
 }
 
-char	*ft_get_before_endl(char *str)
+char	*ft_get_before_nl(char *str)
 {
-	size_t	index;
-	size_t	i;
-	char	*tmp;
+	char	*ret;
+	int		size;
+	int		index;
 
 	index = 0;
-	while (str[index] && str[index] != '\n')
-		index++;
-	tmp = (char *)malloc(sizeof(char) * (index + 2));
-	if (!tmp)
+	size = 0;
+	while (str[size] && str[size] != '\n')
+		size++;
+	ret = malloc(sizeof(char) * size + 1);
+	if (!ret)
 		return (NULL);
-	i = 0;
-	while (i <= index)
+	while (index <= size)
 	{
-		tmp[i] = str[i];
-		i++;
+		ret[index] = str[index];
+		index++;
 	}
-	tmp[i] = '\0';
-	return (tmp);
+	ret[index] = '\0';
+	return (ret);
 }
 
-char	*ft_get_after_endl(char *str)
+char	*ft_get_after_nl(char *str)
 {
-	size_t	start;
-	size_t	i;
-	char	*tmp;
+	char	*ret;
+	int		index;
+	int		start;
 
 	start = 0;
-	i = 0;
+	index = 0;
 	while (str[start] && str[start] != '\n')
 		start++;
-	start++;
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) - start + 1));
-	if (!tmp)
+	ret = malloc(sizeof(char) * (ft_strlen(str) - start + 1));
+	if (!ret)
 		return (NULL);
-	while (str[start + i])
+	if (str[start] == '\n')
+		start++;
+	while (str[start + index])
 	{
-		tmp[i] = str[start + i];
-		i++;
+		ret[index] = str[start + index];
+		index++;
 	}
+	ret[index] = '\0';
 	free(str);
-	tmp[start + i] = '\0';
-	return (tmp);
+	return (ret);
 }
 
-char	*ft_read_next_line(char *str, int fd)
+char	*ft_get_next_nl(char *str, int fd)
 {
 	char	*tmp;
-	char	*ptr;
 	char	*ret;
 
 	ret = str;
@@ -90,69 +90,13 @@ char	*ft_read_next_line(char *str, int fd)
 		tmp = ft_read(fd);
 		if (!tmp)
 			return (ret);
-		ptr = ret;
-		ret = ft_strjoin(ptr, tmp);
-		free(ptr);
+		str = ret;
+		ret = ft_strjoin(str, tmp);
+		free(str);
 		free(tmp);
 	}
 	return (ret);
 }
-// char	*ft_strbreak(char *str, size_t size)
-// {
-// 	char	*ret;
-// 	char	*tmp;
-// 	size_t	index1;
-// 	size_t	index2;
-// 	size_t	str_len;
-
-// 	index1 = -1;
-// 	index2 = -1;
-// 	str_len = ft_strlen(str);
-// 	if (size == 0)
-// 		ret = (char *)malloc(sizeof(char) * (2));
-// 	else
-// 		ret = (char *)malloc(sizeof(char) * (size));
-// 	if (!ret)
-// 		return (NULL);
-// 	tmp = (char *)malloc(sizeof(char) * (str_len - size + 1));
-// 	if (!tmp)
-// 		return (NULL);
-// 	while (++index1 <= size)
-// 		ret[index1] = str[index1];
-// 	ret[index1] = '\0';
-// 	while (++index2 + index1 < str_len)
-// 		tmp[index2] = str[index1 + index2];
-// 	tmp[index2] = '\0';
-// 	str = tmp;
-// 	return (ret);
-// }
-
-// char	*get_next_line(int fd)
-// {
-// 	static char	*str;
-// 	char		*tmp;
-// 	char		*ret;
-// 	size_t		index;
-
-// 	if (fd < 0 || BUFFER_SIZE < 1)
-// 		return (NULL);
-// 	while (ft_findchar(str, '\n'))
-// 	{
-// 		tmp = ft_read(fd);
-// 		if (!tmp)
-// 		{
-// 			if (str)
-// 				index = ft_strlen(str);
-// 			else
-// 				return (NULL);
-// 			continue ;
-// 		}
-// 		ret = str;
-// 		str = ft_strjoin(ret, tmp);
-// 	}
-// 	ret = ft_strbreak(str, index);
-// 	return (ret);
-// }
 
 char	*get_next_line(int fd)
 {
@@ -172,22 +116,25 @@ char	*get_next_line(int fd)
 	if (!str || str[0] == '\0')
 		return (NULL);
 	if (!ft_findchar(str, '\n'))
-		str = ft_read_next_line(str, fd);
-	ret = ft_get_before_endl(str);
+	{
+		ret = str;
+		str = ft_get_next_nl(ret, fd);
+	}
+	ret = ft_get_before_nl(str);
 	tmp = str;
-	str = ft_get_after_endl(tmp);
+	str = ft_get_after_nl(tmp);
 	return (ret);
 }
 
-#include <fcntl.h>
+// #include <fcntl.h>
 
-int main(void)
-{
-	int	fd;
+// int main(void)
+// {
+// 	int	fd;
 
-	fd = open("/Users/fialexan/42cursus/get_next_line/gnlTester/files/41_no_nl", O_RDONLY);
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	close(fd);
-	return (0);
-}
+// 	fd = open("/Users/fialexan/42cursus/get_next_line/gnlTester/files/41_with_nl", O_RDONLY);
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	close(fd);
+// 	return (0);
+// }

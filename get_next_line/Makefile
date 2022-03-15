@@ -6,7 +6,7 @@
 #    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/03 16:13:48 by fialexan          #+#    #+#              #
-#    Updated: 2022/03/07 09:29:32 by fialexan         ###   ########.fr        #
+#    Updated: 2022/03/15 09:47:37 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ BONUS_OBJS = $(BONUS:.c=.o)
 
 NAME = gnl
 
-CFLAGS = -Wall -Werror -Wextra -g -c -D BUFFER_SIZE=10
+CFLAGS = -g -Wall -Werror -Wextra -D BUFFER_SIZE=1 -o out
 
 all: ${NAME}
 
