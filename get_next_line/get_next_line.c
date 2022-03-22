@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:39:23 by fialexan          #+#    #+#             */
-/*   Updated: 2022/03/15 11:43:20 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/03/22 10:11:11 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_get_before_nl(char *str)
 	size = 0;
 	while (str[size] && str[size] != '\n')
 		size++;
-	ret = malloc(sizeof(char) * size + 1);
+	ret = malloc(sizeof(char) * size + 2);
 	if (!ret)
 		return (NULL);
 	while (index <= size)
