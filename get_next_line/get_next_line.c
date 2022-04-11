@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:39:23 by fialexan          #+#    #+#             */
-/*   Updated: 2022/03/22 11:01:47 by filipe           ###   ########.fr       */
+/*   Updated: 2022/04/04 13:09:40 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*ft_get_after_nl(char *str)
 		index++;
 	}
 	ret[index] = '\0';
-	free(str);
+	// free(str);
 	return (ret);
 }
 
@@ -120,21 +120,23 @@ char	*get_next_line(int fd)
 		ret = str;
 		str = ft_get_next_nl(ret, fd);
 	}
+	tmp = ft_get_after_nl(str);
 	ret = ft_get_before_nl(str);
-	tmp = str;
-	str = ft_get_after_nl(tmp);
+	free(str);
+	str = tmp;
 	return (ret);
 }
 
-// #include <fcntl.h>
+#include <fcntl.h>
 
-// int main(void)
-// {
-// 	int	fd;
+int main(void)
+{
+	int	fd;
 
-// 	fd = open("/Users/fialexan/42cursus/get_next_line/gnlTester/files/41_with_nl", O_RDONLY);
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	close(fd);
-// 	return (0);
-// }
+	fd = open("/Users/fialexan/42cursus/get_next_line/gnlTester/files/42_with_nl", O_RDONLY);
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	close(fd);
+	return (0);
+}
