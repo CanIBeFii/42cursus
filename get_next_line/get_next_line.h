@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 10:41:22 by fialexan          #+#    #+#             */
-/*   Updated: 2022/04/26 15:00:27 by fialexan         ###   ########.fr       */
+/*   Created: 2022/04/28 12:27:14 by fialexan          #+#    #+#             */
+/*   Updated: 2022/04/28 13:57:22 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	*find_new_line(char *str, int fd);
 char	*ft_strdup(char *s);
 char	*get_before_nl(char *s);
 char	*ft_substr(char *s, int start, int len);
+char	*get_after_nl(char *s);
 int		ft_findchar(char *str, char c);
 int		ft_strlen(char *str);
 

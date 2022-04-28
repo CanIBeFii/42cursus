@@ -6,7 +6,7 @@
 #    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/03 16:13:48 by fialexan          #+#    #+#              #
-#    Updated: 2022/04/04 12:45:13 by fialexan         ###   ########.fr        #
+#    Updated: 2022/04/28 12:13:59 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ fclean: clean
 re: fclean all
 
 val:
-	valgrind --tool=memcheck --leak-check=yes ./a.out
-
+	valgrind --leak-check=full --show-leak-kinds=all ./a.out
 # bonus: $(OBJS) $(BONUS_OBJS)
 # 	ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)

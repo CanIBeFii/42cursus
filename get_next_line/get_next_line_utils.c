@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 10:41:14 by fialexan          #+#    #+#             */
-/*   Updated: 2022/04/26 15:12:05 by fialexan         ###   ########.fr       */
+/*   Created: 2022/04/28 12:28:43 by fialexan          #+#    #+#             */
+/*   Updated: 2022/04/28 13:17:47 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_findchar(char *str, char c)
 {
 	int	index;
 
+	if (!str)
+		return (-1);
 	index = 0;
 	while (str[index] != '\0')
 	{
@@ -44,11 +46,13 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i1;
 	int		i2;
 
-	i1 = 0;
-	i2 = 0;
+	if (!s1 && !s2)
+		return (NULL);
 	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (str == NULL)
 		return (NULL);
+	i1 = 0;
+	i2 = 0;
 	while (s1 && s1[i1] != '\0')
 	{
 		str[i1] = s1[i1];
@@ -67,9 +71,13 @@ char	*ft_strdup(char *s)
 {
 	char	*str;
 	int		i;
+	int		size;
 
 	i = 0;
-	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	size = ft_strlen(s);
+	if (size == 0)
+		return (NULL);
+	str = malloc(sizeof(char) * (size + 1));
 	if (str == NULL)
 		return (NULL);
 	if (s[0] == '\0')
