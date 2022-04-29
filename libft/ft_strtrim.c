@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 11:12:04 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/28 09:17:36 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 12:02:08 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*str;
 
+	if (!s1)
+		return (NULL);
 	begin = 0;
 	end = ft_strlen((char *)s1);
 	while (*(char *)(s1 + begin) != '\0' &&

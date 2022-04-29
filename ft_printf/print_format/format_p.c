@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:59:12 by fialexan          #+#    #+#             */
-/*   Updated: 2022/04/11 12:59:53 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 13:14:58 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 
 int	format_p(va_list args)
 {
-	return (0);
+	unsigned long	adr;
+	char			*str;
+
+	adr = (unsigned long) va_arg(args, void *);
+	
 }

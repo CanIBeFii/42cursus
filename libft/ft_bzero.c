@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:56:44 by fialexan          #+#    #+#             */
-/*   Updated: 2022/02/17 10:57:07 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/04/29 11:55:00 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_bzero(void *s, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		*(unsigned char *)(s + i) = 0;
+		*(unsigned char *)(s + i) = '\0';
 		i++;
 	}
 }
