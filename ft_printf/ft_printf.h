@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 10:48:25 by fialexan          #+#    #+#             */
-/*   Updated: 2022/04/29 13:19:50 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/03 12:31:07 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int		format_u(va_list args);
 int		format_x(va_list args);
 int		format_X(va_list args);
 char	*ft_convert_hex(unsigned long arg);
+int		ft_hex_len(unsigned long num);
 
 #endif
