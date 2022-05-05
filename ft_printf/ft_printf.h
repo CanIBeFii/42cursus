@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 10:48:25 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/03 12:31:07 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:31:26 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 int		ft_printf(const char *str, ...);
 int		valid_format(char c);
+int		ft_convert_hex(unsigned long arg, int state);
 int		printf_decoder(char c, va_list args);
 int		print_format(char c, va_list args);
 int		format_c(va_list args);
@@ -30,7 +31,8 @@ int		format_i(va_list args);
 int		format_u(va_list args);
 int		format_x(va_list args);
 int		format_X(va_list args);
-char	*ft_convert_hex(unsigned long arg);
+char	*ft_uitoa(unsigned int num);
 int		ft_hex_len(unsigned long num);
+int		ft_get_int_size(unsigned int num);
 
 #endif

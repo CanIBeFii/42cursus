@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_s.c                                         :+:      :+:    :+:   */
+/*   format_p.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 12:54:22 by fialexan          #+#    #+#             */
-/*   Updated: 2022/04/11 12:57:50 by fialexan         ###   ########.fr       */
+/*   Created: 2022/04/11 12:59:12 by fialexan          #+#    #+#             */
+/*   Updated: 2022/05/05 14:34:04 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-int	format_s(va_list args)
+int	format_p(va_list args)
 {
-	char	*str;
-	int		i;
+	unsigned long	adr;
+	int				res;
 
-	str = va_arg(args, char *);
-	i = ft_strlen(str);
-	ft_putstr_fd(str, 1);
-	return (i);
+	adr = (unsigned long) va_arg(args, void *);
+	res = ft_convert_hex(adr, 1);
+	return (res);
 }

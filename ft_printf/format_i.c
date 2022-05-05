@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_p.c                                         :+:      :+:    :+:   */
+/*   format_i.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 12:59:12 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/04 15:37:28 by fialexan         ###   ########.fr       */
+/*   Created: 2022/05/05 11:51:02 by fialexan          #+#    #+#             */
+/*   Updated: 2022/05/05 14:23:42 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-int	format_p(va_list args)
+int	format_i(va_list args)
 {
-	unsigned long	adr;
+	char	*num;
+	int		n;
 
-	adr = (unsigned long) va_arg(args, void *);
-	return (ft_convert_hex(adr, 1));
+	n = va_arg(args, int);
+	num = ft_itoa(n);
+	ft_putstr_fd(num, 1);
+	n = ft_strlen(num);
+	free(num);
+	return (n);
 }

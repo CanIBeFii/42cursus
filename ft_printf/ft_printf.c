@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 10:48:27 by fialexan          #+#    #+#             */
-/*   Updated: 2022/04/11 13:00:16 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:08:35 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,14 @@ int	print_format(char c, va_list args)
 	if (c == 'p')
 		return (format_p(args));
 	if (c == 'd')
-		return (3);
+		return (format_d(args));
 	if (c == 'i')
-		return (4);
+		return (format_i(args));
 	if (c == 'u')
-		return (5);
+		return (format_u(args));
 	if (c == 'x')
-		return (6);
+		return (0);
 	if (c == 'X')
-		return (7);
+		return (0);
 	return (0);
 }
