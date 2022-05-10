@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_X.c                                         :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 17:47:17 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/10 17:47:18 by filipe           ###   ########.fr       */
+/*   Created: 2022/02/17 10:59:43 by fialexan          #+#    #+#             */
+/*   Updated: 2022/02/18 09:01:47 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int format_X(va_list args)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned int	num;
+	size_t	i;
 
-	num = va_arg(args, unsigned int);
-	return (ft_convert_hex((unsigned long)num, 0));
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (*(unsigned char *)(s1 + i) == *(unsigned char *)(s2 + i) &&
+			i < n - 1)
+			i++;
+	return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
 }

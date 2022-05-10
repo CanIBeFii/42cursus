@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_X.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 17:47:17 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/10 17:47:18 by filipe           ###   ########.fr       */
+/*   Created: 2022/02/17 12:14:28 by fialexan          #+#    #+#             */
+/*   Updated: 2022/04/29 11:59:13 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int format_X(va_list args)
+void	ft_putstr_fd(char *s, int fd)
 {
-	unsigned int	num;
+	int	i;
 
-	num = va_arg(args, unsigned int);
-	return (ft_convert_hex((unsigned long)num, 0));
+	i = -1;
+	if (!s)
+		return ;
+	while (s[++i] != '\0')
+		ft_putchar_fd(s[i], fd);
 }

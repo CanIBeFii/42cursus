@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_X.c                                         :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 17:47:17 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/10 17:47:18 by filipe           ###   ########.fr       */
+/*   Created: 2022/05/10 17:46:31 by filipe            #+#    #+#             */
+/*   Updated: 2022/05/10 19:09:43 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-int format_X(va_list args)
+int main(int argc, char **argv)
 {
-	unsigned int	num;
-
-	num = va_arg(args, unsigned int);
-	return (ft_convert_hex((unsigned long)num, 0));
+	int		*nums;
+	t_stack	*stack_a;
+	
+	nums = check_input(argc, argv);
+	if (!nums)
+		return (0);
+	
 }

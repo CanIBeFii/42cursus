@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_X.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 17:47:17 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/10 17:47:18 by filipe           ###   ########.fr       */
+/*   Created: 2022/02/17 11:02:25 by fialexan          #+#    #+#             */
+/*   Updated: 2022/02/18 11:38:02 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int format_X(va_list args)
+char	*ft_strchr(const char *s, int c)
 {
-	unsigned int	num;
+	int		i;
+	int		e;
+	char	*str;
 
-	num = va_arg(args, unsigned int);
-	return (ft_convert_hex((unsigned long)num, 0));
+	i = 0;
+	e = 0;
+	str = (void *)s;
+	while (str[e])
+		e++;
+	while (i <= e)
+	{
+		if (str[i] == (char)c)
+			return (&str[i]);
+		i++;
+	}
+	return (NULL);
 }
