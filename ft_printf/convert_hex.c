@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 13:18:10 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/04 15:07:24 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:39:50 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_convert_hex(unsigned long arg, int state)
 {
-	if (arg > 16)
+	if (arg > 15)
 		ft_convert_hex(arg / 16, state);
 	if (state)
 		ft_putchar_fd("0123456789abcdef"[arg % 16], 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 10:48:27 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/05 14:08:35 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:07:12 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,24 @@ int	print_format(char c, va_list args)
 	if (c == 'u')
 		return (format_u(args));
 	if (c == 'x')
-		return (0);
+		return (format_x(args));
 	if (c == 'X')
-		return (0);
+		return (format_X(args));
 	return (0);
 }
+
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+// 	char	*s = NULL;
+// 	int		i, e;
+// 	i = ft_printf("%s", s);
+// 	e = printf("%s", s);
+// 	if (i == e)
+// 		printf("CERTO");
+// 	else
+// 		printf("ERRADO");
+// 	return (0);
+// }

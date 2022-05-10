@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format_u.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:48:14 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/05 14:23:47 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/10 17:21:19 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@ int	format_u(va_list args)
 {
 	unsigned int	num;
 	int				arg;
-	char			*str;
 
 	arg = va_arg(args, int);
 	if (arg < 0)
-		num = 4294967295 + arg;
+		num = 4294967296 + arg;
 	else
 		num = arg;
-	str = ft_uitoa(num);
-	ft_putstr_fd(str, 1);
-	arg = ft_strlen(str);
-	free(str);
+	ft_uitoa(num);
+	arg = ft_get_int_size(num);
 	return (arg);
 }
 
@@ -45,27 +42,10 @@ int	ft_get_int_size(unsigned int num)
 	return (len);
 }
 
-char	*ft_uitoa(unsigned int num)
+int	ft_uitoa(unsigned int num)
 {
-	char	*str;
-	int		len;
-	int		temp;
-
-	len = ft_get_int_size(num);
-	temp = len;
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	if (num == 0)
-		str[0] = '0';
-	else
-	{
-		while (num != 0)
-		{
-			str[--temp] = (num % 10) + '0';
-			num = num / 10;
-		}
-	}
-	str[len] = '\0';
-	return (str);
+	if (num > 9)
+		ft_uitoa(num / 10);
+	ft_putchar_fd(num % 10 + '0', 1);
+	return (1);
 }

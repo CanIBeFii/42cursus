@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format_s.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:54:22 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/05 14:24:03 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:52:29 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int	format_s(va_list args)
 	int		i;
 
 	str = va_arg(args, char *);
+	if (!str)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
 	i = ft_strlen(str);
 	ft_putstr_fd(str, 1);
 	return (i);

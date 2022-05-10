@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
+#    By: filipe <filipe@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 10:35:50 by fialexan          #+#    #+#              #
-#    Updated: 2022/05/05 14:34:41 by fialexan         ###   ########.fr        #
+#    Updated: 2022/05/09 18:01:25 by filipe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SCRS = ft_printf.c format_c.c format_d.c format_i.c format_p.c format_s.c \
-		format_u.c convert_hex.c
+		format_u.c format_x.c format_X.c convert_hex.c
 
 OBJS = $(SCRS:.c=.o)
 
@@ -23,7 +23,7 @@ NAME = libftprintf.a
 
 LIBFT_DIR = ./libft
 LIBFT =	libft.a
-CFLAGS = -Wall -Werror -Wextra -c
+CFLAGS = -Wall -Werror -Wextra
 
 all: ${NAME}
 	
@@ -33,12 +33,12 @@ ${NAME}: $(OBJS)
 	@ar -rcs $(NAME) $(OBJS)
 
 $(OBJS): $(SCRS)
-	@gcc $(CFLAGS) -I $(LIBFT_DIR) $(SCRS) 
+	@gcc $(CFLAGS) -c -I $(LIBFT_DIR) $(SCRS) 
 
 clean:
 	@make clean -C $(LIBFT_DIR)
 	@rm -f $(OBJS) $(BONUS_OBJS)
-	make clean -C $(LIBFT_DIR)
+	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	@rm -f $(LIBFT_DIR)/$(LIBFT)
@@ -47,4 +47,8 @@ fclean: clean
 re: fclean all
 
 bonus: $(OBJS) $(BONUS_OBJS)
-	ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+	@ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
+compile:
+	@gcc $(CFLAGS) -c -I $(LIBFT_DIR) $(SCRS)
+	@gcc $(CFLAGS) -I $(LIBFT_DIR) $(OBJS)
