@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 10:48:27 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/09 18:07:12 by filipe           ###   ########.fr       */
+/*   Updated: 2022/05/13 12:14:27 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,3 @@ int	print_format(char c, va_list args)
 		return (format_X(args));
 	return (0);
 }
-
-
-// #include <stdio.h>
-
-// int main(void)
-// {
-// 	char	*s = NULL;
-// 	int		i, e;
-// 	i = ft_printf("%s", s);
-// 	e = printf("%s", s);
-// 	if (i == e)
-// 		printf("CERTO");
-// 	else
-// 		printf("ERRADO");
-// 	return (0);
-// }
