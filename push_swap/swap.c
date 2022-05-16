@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 11:08:53 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/06 17:08:04 by filipe           ###   ########.fr       */
+/*   Created: 2022/05/16 13:45:34 by fialexan          #+#    #+#             */
+/*   Updated: 2022/05/16 13:55:26 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-size_t	ft_strlen(const char *s)
+void	swap(t_stack **stack)
 {
-	int	i;
+	t_stack	*tmp;
+	t_stack	*mem;
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	tmp = stackbefore_last(*stack);
+	mem = tmp->next;
+	tmp->next = mem->next;
+	mem->next = NULL;
 }

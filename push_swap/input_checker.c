@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:25 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/10 18:51:39 by filipe           ###   ########.fr       */
+/*   Updated: 2022/05/16 12:46:53 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,31 @@ int	*check_input(int argc, char **argv)
 {
 	int	i;
 	int	*nums;
-	int	n;
 
 	if (argc == 1)
 		return (0);
-	i = 1;
+	i = 0;
 	nums = malloc(sizeof(int) * (argc - 1));
 	if (!nums)
 		return (NULL);
-	while (i <= argc)
+	while (++i < argc)
 	{
-		if (check_int(argv[i]) == 0)
+		if (check_int(nums, i, argv[i]) == 0)
+		{
+			free(nums);
 			return (NULL);
-		n = ft_atoi(argv[i]);
-		if (check_duplicate(nums, n, i) == 1)
-			return (NULL);
-		i++;
+		}
+		nums[i - 1] = ft_atoi(argv[i]);
 	}
 	return (nums);
 }
 
-int	check_duplicate(int *nums, int n, int argc)
+int	check_duplicate(int *nums, int n, int index)
 {
 	int	i;
 
 	i = 0;
-	while (i < argc)
+	while (i < index - 1)
 	{
 		if (nums[i] == n)
 			return (1);
@@ -50,7 +49,7 @@ int	check_duplicate(int *nums, int n, int argc)
 	return (0);
 }
 
-int	check_int(char *str)
+int	check_int(int *nums, int index, char *str)
 {
 	int	i;
 
@@ -59,10 +58,12 @@ int	check_int(char *str)
 		i++;
 	while (str[i] != '\0')
 	{
-		if ('0' <= str[i] || str[i] <= '9')
+		if ('0' <= str[i] && str[i] <= '9')
 			i++;
 		else
 			return (0);
 	}
+	if (check_duplicate(nums, ft_atoi(str), index) == 1)
+		return (0);
 	return (1);
 }

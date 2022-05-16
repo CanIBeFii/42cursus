@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:31 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/11 13:18:19 by filipe           ###   ########.fr       */
+/*   Updated: 2022/05/16 14:00:45 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		*nums;
 	int		*nums_order;
 	t_stack	*stack_a;
-	
+
 	nums = check_input(argc, argv);
 	if (!nums)
 		return (0);
@@ -25,6 +25,7 @@ int main(int argc, char **argv)
 	if (!nums_order)
 		return (0);
 	stack_a = init_stack(nums, nums_order, argc);
+	return (0);
 }
 
 int	*get_order(int *nums, int argc)

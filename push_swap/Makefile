@@ -3,15 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: filipe <filipe@student.42.fr>              +#+  +:+       +#+         #
+#    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/22 10:35:50 by fialexan          #+#    #+#              #
-#    Updated: 2022/05/09 18:01:25 by filipe           ###   ########.fr        #
+#    Created: 2022/05/16 11:27:28 by fialexan          #+#    #+#              #
+#    Updated: 2022/05/16 13:41:49 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SCRS = ft_printf.c format_c.c format_d.c format_i.c format_p.c format_s.c \
-		format_u.c format_x.c format_X.c convert_hex.c
+SCRS = push_swap.c stack_operations.c stack_init.c input_checker.c
 
 OBJS = $(SCRS:.c=.o)
 
@@ -19,36 +18,29 @@ BONUS =
 
 BONUS_OBJS = $(BONUS:.c=.o)
 
-NAME = libftprintf.a
+NAME = push_swap
 
 LIBFT_DIR = ./libft
-LIBFT =	libft.a
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 all: ${NAME}
 	
 ${NAME}: $(OBJS)
 	@make -C $(LIBFT_DIR)
-	@cp $(LIBFT_DIR)/$(LIBFT) $(NAME)	
-	@ar -rcs $(NAME) $(OBJS)
+	@gcc $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -o $(NAME)  
 
 $(OBJS): $(SCRS)
 	@gcc $(CFLAGS) -c -I $(LIBFT_DIR) $(SCRS) 
 
 clean:
-	@make clean -C $(LIBFT_DIR)
 	@rm -f $(OBJS) $(BONUS_OBJS)
 	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
-	@rm -f $(LIBFT_DIR)/$(LIBFT)
-	@rm -f $(NAME)
+	@make fclean -C $(LIBFT_DIR) 
+	@rm -rf $(NAME)
 
 re: fclean all
 
 bonus: $(OBJS) $(BONUS_OBJS)
 	@ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-
-compile:
-	@gcc $(CFLAGS) -c -I $(LIBFT_DIR) $(SCRS)
-	@gcc $(CFLAGS) -I $(LIBFT_DIR) $(OBJS)

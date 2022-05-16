@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_x.c                                         :+:      :+:    :+:   */
+/*   format_X.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 17:47:13 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/13 12:14:48 by fialexan         ###   ########.fr       */
+/*   Created: 2022/05/10 17:47:17 by filipe            #+#    #+#             */
+/*   Updated: 2022/05/10 17:47:18 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	format_x(va_list args)
+int format_X(va_list args)
 {
 	unsigned int	num;
 
 	num = va_arg(args, unsigned int);
-	return (ft_convert_hex((unsigned long)num, 1));
+	return (ft_convert_hex((unsigned long)num, 0));
 }

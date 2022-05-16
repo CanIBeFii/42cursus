@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_i.c                                         :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 11:51:02 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/05 14:23:42 by fialexan         ###   ########.fr       */
+/*   Created: 2022/05/16 13:56:32 by fialexan          #+#    #+#             */
+/*   Updated: 2022/05/16 14:01:24 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-int	format_i(va_list args)
+int	solver(t_stack	**stack_a, int argc)
 {
-	char	*num;
-	int		n;
-
-	n = va_arg(args, int);
-	num = ft_itoa(n);
-	ft_putstr_fd(num, 1);
-	n = ft_strlen(num);
-	free(num);
-	return (n);
+	if (argc == 2)
+		return (0);
+	else if (argc == 3)
+		return (0);
+	else if (argc == 4)
+		return (0);
+	else if (argc == 5)
+		return (0);
+	else
+		return (0);
 }

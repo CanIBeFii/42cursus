@@ -6,7 +6,7 @@
 #    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 12:27:56 by fialexan          #+#    #+#              #
-#    Updated: 2022/03/04 15:29:55 by fialexan         ###   ########.fr        #
+#    Updated: 2022/05/16 12:41:39 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,18 +31,18 @@ CFLAGS = -Wall -Werror -Wextra -c
 all: ${NAME}
 	
 ${NAME}: $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+	@ar -rcs $(NAME) $(OBJS)
 
 $(OBJS): $(SCRS)
-	gcc $(CFLAGS) $(SCRS) 
+	@gcc $(CFLAGS) $(SCRS) 
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	@rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
 bonus: $(OBJS) $(BONUS_OBJS)
-	ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+	@ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
