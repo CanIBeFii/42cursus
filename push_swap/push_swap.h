@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:21 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/19 15:04:41 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/19 16:23:17 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ void		rra(t_stack **stack_a);
 void		rrb(t_stack **stack_b);
 
 void		push(t_stack **stack_sender, t_stack **stack_receiver);
-void		pa(t_stack **stack_a, t_stack *stack_b);
-void		pb(t_stack **stack_a, t_stack *stack_b);
+void		pa(t_stack **stack_a, t_stack **stack_b);
+void		pb(t_stack **stack_a, t_stack **stack_b);
 
 void		solver(t_stack	**stack_a, int argc);
 void		solve_2(t_stack **stack_a);
+void		solve_3(t_stack **stack_a);
 
 #endif

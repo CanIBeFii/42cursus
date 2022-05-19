@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:31 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/16 14:00:45 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/19 16:18:02 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	if (!nums_order)
 		return (0);
 	stack_a = init_stack(nums, nums_order, argc);
+	solver(&stack_a, argc - 1);
 	return (0);
 }
 

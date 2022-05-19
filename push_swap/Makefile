@@ -6,11 +6,13 @@
 #    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/16 11:27:28 by fialexan          #+#    #+#              #
-#    Updated: 2022/05/16 13:41:49 by fialexan         ###   ########.fr        #
+#    Updated: 2022/05/19 16:20:57 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SCRS = push_swap.c stack_operations.c stack_init.c input_checker.c
+SCRS = push_swap.c stack_operations.c stack_init.c input_checker.c \
+	check_sort.c push.c reverse_rotate.c rotate.c small_numbers.c \
+	solver.c swap.c
 
 OBJS = $(SCRS:.c=.o)
 

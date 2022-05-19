@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:22:56 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/19 14:37:11 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/19 16:13:45 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,17 @@ void	solve_3(t_stack	**stack_a)
 	{
 		if ((*stack_a)->next->order == 0)
 			sa(stack_a);
+		else
+			rra(stack_a);
 	}
 	else
 	{
+		if ((*stack_a)->next->order == 0)
+			ra(stack_a);
+		else
+		{
+			sa(stack_a);
+			rra(stack_a);
+		}	
 	}
 }

@@ -12,7 +12,7 @@
             "request": "launch",
             "program": "/Users/fialexan/42cursus/push_swap/push_swap",
             //"program": "enter program name, for example ${workspaceFolder}/a.out",
-            "args": ["1", "2", "0", "-4", "-2"],
+            "args": ["61", "10", "5"],
             //"args": [],
             "stopAtEntry": true,
             //"stopAtEntry": false,
