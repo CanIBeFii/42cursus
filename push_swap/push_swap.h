@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:21 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/19 13:21:27 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:50:21 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int			check_int(int *nums, int index, char *str);
 int			check_duplicate(int *nums, int n, int index);
 t_stack		*init_stack(int *nums, int *nums_order, int argc);
 t_stack		*stacklast(t_stack *stack);
+t_stack		*stackbefore_last(t_stack *stack);
 t_stack		*stacknew(int data, int order);
 void		stackadd_back(t_stack **stack, t_stack *new);
 void		stackadd_front(t_stack **stack, t_stack*new);
@@ -44,6 +45,14 @@ void		rotate(t_stack **stack);
 void		rr(t_stack **stack_a, t_stack **stack_b);
 void		ra(t_stack **stack_a);
 void		rb(t_stack **stack_b);
+
+void		reverse_rotate(t_stack **stack);
+void		rrr(t_stack	**stack_a, t_stack **stack_b);
+void		rra(t_stack **stack_a);
+void		rrb(t_stack **stack_b);
+
+void		push(t_stack **stack_sender, t_stack **stack_receiver);
+
 void		solver(t_stack	**stack_a, int argc);
 void		solve_2(t_stack **stack_a);
 

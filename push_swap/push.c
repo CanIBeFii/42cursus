@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   small_numbers.c                                    :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 11:22:56 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/19 14:37:11 by fialexan         ###   ########.fr       */
+/*   Created: 2022/05/19 14:49:26 by fialexan          #+#    #+#             */
+/*   Updated: 2022/05/19 14:57:51 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	solve_2(t_stack **stack_a)
+void	push(t_stack **stack_sender, t_stack **stack_receiver)
 {
-	if (is_sorted(stack_a) == 0)
-		sa(stack_a);
+	t_stack	*mem;
+	t_stack	*tmp;
+
+	if (*stack_sender == NULL)
+		return ;
+	mem = (*stack_sender)->next;
+	tmp = (*stack_sender);
+	(*stack_sender) = mem;
+	tmp->next = (*stack_receiver);
+	(*stack_receiver) = (tmp);
 }
 
-void	solve_3(t_stack	**stack_a)
-{
-	if (is_sorted(stack_a) == 1)
-		return ;
-	if ((*stack_a)->order == 0)
-	{
-		sa(stack_a);
-		ra(stack_a);
-	}
-	else if ((*stack_a)->order == 1)
-	{
-		if ((*stack_a)->next->order == 0)
-			sa(stack_a);
-	}
-	else
-	{
-	}
-}
+
