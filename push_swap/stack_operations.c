@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:44:53 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/16 13:52:21 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/19 11:33:59 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,6 @@ t_stack	*stacklast(t_stack	*stack)
 	while (stack && stack->next != NULL)
 		stack = stack->next;
 	return (stack);
-}
-
-t_stack	*stackbefore_last(t_stack *stack)
-{
-	t_stack	*tmp;
-
-	tmp = stack;
-	while (tmp && tmp->next != NULL && tmp->next->next != NULL
-		&& tmp->next->next->next != NULL)
-		tmp = tmp->next;
-	return (tmp);
 }
 
 void	stackadd_front(t_stack **stack, t_stack *new)

@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: filipe <filipe@student.42.fr>              +#+  +:+       +#+         #
+#    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 10:35:50 by fialexan          #+#    #+#              #
-#    Updated: 2022/05/09 18:01:25 by filipe           ###   ########.fr        #
+#    Updated: 2022/05/19 12:11:43 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SCRS = ft_printf.c format_c.c format_d.c format_i.c format_p.c format_s.c \
-		format_u.c format_x.c format_X.c convert_hex.c
+		format_u.c format_x_small.c format_x_big.c convert_hex.c
 
 OBJS = $(SCRS:.c=.o)
 

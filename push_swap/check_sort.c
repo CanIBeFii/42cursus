@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_X.c                                         :+:      :+:    :+:   */
+/*   check_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 17:47:17 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/10 17:47:18 by filipe           ###   ########.fr       */
+/*   Created: 2022/05/19 12:44:31 by fialexan          #+#    #+#             */
+/*   Updated: 2022/05/19 12:57:27 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-int format_X(va_list args)
+int	is_sorted(t_stack **stack)
 {
-	unsigned int	num;
+	stack_t	*tmp;
 
-	num = va_arg(args, unsigned int);
-	return (ft_convert_hex((unsigned long)num, 0));
+	tmp = (*stack);
+	while (tmp && tmp->next)
+	{
+		if (tmp->order > tmp->next->order)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }
