@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_numbers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:22:56 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/19 16:13:45 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/23 08:17:18 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,44 @@ void	solve_3(t_stack	**stack_a)
 			rra(stack_a);
 		}	
 	}
+}
+
+
+void	solve_4(t_stack **stack_a)
+{
+	int		position;
+	t_stack	*stack_b;
+
+	position = get_position(stack_a, 3);
+	if (position == 0)
+	{
+		pb(stack_a, &stack_b);
+		solve_3(stack_a);
+		pa(stack_a, &stack_b);
+		ra(stack_a);
+	}
+	else if (position == 3)
+	{
+		rra(stack_a);
+		pb(stack_a, &stack_b);
+		solve_3(stack_a);
+		pa(stack_a, &stack_b);
+		ra(stack_a);
+	}
+	else
+	{
+		while (position != 0)
+		{
+			ra(stack_a);
+			position = get_position(stack_a);
+		}
+		pb(stack_a, &stack_b);
+		solve_3(stack_a);
+		pa(stack_a, &stack_b);
+		ra(stack_a);
+	}
+}
+
+void	solve_5(t_stack **stack_a)
+{
 }
