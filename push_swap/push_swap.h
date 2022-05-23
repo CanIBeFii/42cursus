@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:21 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/23 08:13:50 by filipe           ###   ########.fr       */
+/*   Updated: 2022/05/23 16:09:39 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void		stackadd_front(t_stack **stack, t_stack*new);
 
 int			is_sorted(t_stack **stack);
 int			get_position(t_stack **stack, int order);
+int			get_position_order(t_stack **stack, int order);
+int			get_position_betweeen_num(t_stack **stack, int start, int end);
+int			stack_size(t_stack **stack);
 
 void		swap(t_stack **stack);
 void		ss(t_stack **stack_a, t_stack **stack_b);

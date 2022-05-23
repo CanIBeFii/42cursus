@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:35:47 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/16 13:35:56 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:53:04 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_stack	*stacknew(int data, int order)
 		return (NULL);
 	new->data = data;
 	new->order = order;
+	// new->stack_order = order;
 	new->next = NULL;
 	return (new);
 }
