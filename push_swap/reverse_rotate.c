@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 14:37:23 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/19 14:48:31 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:03:17 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,18 @@ void	rrr(t_stack	**stack_a, t_stack **stack_b)
 	reverse_rotate(stack_b);
 	ft_putendl_fd("rrr", 1);
 }
+
+void	r_rotate_x_times(t_stack **stack, int x, int stack_num)
+{
+	int	i;
+
+	i = 0;
+	while (i < x)
+	{
+		if (stack_num == 1)
+			rra(stack);
+		else
+			rrb(stack);
+		i++;
+	}
+}	

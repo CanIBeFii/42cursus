@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 07:56:01 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/23 16:09:16 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:41:14 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	get_position(t_stack **stack, int order)
 {
-	t_stack	tmp;
+	t_stack	*tmp;
 	int		position;
 
 	tmp = (*stack);
@@ -44,12 +44,12 @@ int	get_position_betweeen_num(t_stack **stack, int start, int end)
 
 int	get_position_order(t_stack **stack, int order)
 {
-	t_stack	tmp;
+	t_stack	*tmp;
 	int		position;
 
 	tmp = (*stack);
 	position = 0;
-	while (tmp != NULL && tmp->order > order)
+	while (tmp != NULL && tmp->order < order)
 	{
 		tmp = tmp->next;
 		position++;

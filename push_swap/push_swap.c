@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:31 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/19 16:18:02 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:21:59 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,16 @@ int	main(int argc, char **argv)
 
 	nums = check_input(argc, argv);
 	if (!nums)
+	{
+		error_found();
 		return (0);
+	}
 	nums_order = get_order(nums, argc);
 	if (!nums_order)
+	{
+		error_found();
 		return (0);
+	}
 	stack_a = init_stack(nums, nums_order, argc);
 	solver(&stack_a, argc - 1);
 	return (0);
@@ -52,4 +58,9 @@ int	*get_order(int *nums, int argc)
 		nums_order[i] = tmp;
 	}
 	return (nums_order);
+}
+
+void	error_found(void)
+{
+	ft_putendl_fd("Error", 2);
 }

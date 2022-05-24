@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:21 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/23 16:09:39 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:22:16 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ typedef struct s_stack {
 	int				order;
 	struct s_stack	*next;
 }	t_stack;
+
+long int	long_atoi(const char *str);
+void		error_found(void);
 
 int			*check_input(int argc, char **argv);
 int			check_duplicate(int *nums, int n, int index);
@@ -51,11 +54,13 @@ void		rotate(t_stack **stack);
 void		rr(t_stack **stack_a, t_stack **stack_b);
 void		ra(t_stack **stack_a);
 void		rb(t_stack **stack_b);
+void		rotate_x_times(t_stack **stack, int x, int stack_num);
 
 void		reverse_rotate(t_stack **stack);
 void		rrr(t_stack	**stack_a, t_stack **stack_b);
 void		rra(t_stack **stack_a);
 void		rrb(t_stack **stack_b);
+void		r_rotate_x_times(t_stack **stack, int x, int stack_num);
 
 void		push(t_stack **stack_sender, t_stack **stack_receiver);
 void		pa(t_stack **stack_a, t_stack **stack_b);
@@ -66,5 +71,6 @@ void		solve_2(t_stack **stack_a);
 void		solve_3(t_stack **stack_a);
 void		solve_4(t_stack **stack_a);
 void		solve_5(t_stack	**stack_a);
+void		solve_5_put_in_order(t_stack **stack);
 
 #endif
