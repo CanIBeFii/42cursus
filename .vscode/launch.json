@@ -1,25 +1,18 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-		
-
-        {
-            "name": "(lldb) Launch",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "/Users/fialexan/42cursus/push_swap/push_swap",
-            //"program": "enter program name, for example ${workspaceFolder}/a.out",
-            "args": ["61", "10", "5"],
-            //"args": [],
-            "stopAtEntry": true,
-            //"stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "lldb"
-        }
-    ]
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [{
+		"name": "(lldb) Launch",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "/Users/fialexan/42cursus/push_swap/push_swap",
+		"args": ["2", "3", "0", "4", "1"],
+		"stopAtEntry": false,
+		"cwd": "${fileDirname}",
+		"environment": [],
+		"externalConsole": false,
+		"MIMode": "lldb"
+	}]
 }

@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:31 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/24 14:21:59 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/26 11:35:31 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int argc, char **argv)
 	int		*nums_order;
 	t_stack	*stack_a;
 
+	if (argc == 1)
+		return (0);
 	nums = check_input(argc, argv);
 	if (!nums)
 	{
