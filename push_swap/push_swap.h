@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:21 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/27 12:33:05 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/27 13:23:18 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void		solve_2(t_stack **stack_a);
 void		solve_3(t_stack **stack_a);
 void		solve_4(t_stack **stack_a, t_stack **stack_b);
 void		solve_5(t_stack	**stack_a, t_stack **stack_b);
-void	solve_5_put_in_order(t_stack **stack_a, t_stack **stack_b, int pos);
+void		solve_5_put_in_order(t_stack **stack_a, t_stack **stack_b, int pos);
+void		radix_sort(t_stack **stack_a, t_stack **stack_b, int argc);
 
 #endif

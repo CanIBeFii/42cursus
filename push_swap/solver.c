@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 13:56:32 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/26 14:56:32 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/27 13:36:08 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	solver(t_stack	**stack_a, int argc)
 	else if (argc == 5)
 		solve_5(stack_a, &stack_b);
 	else
-		return ;
+		radix_sort(stack_a, &stack_b, argc - 1);
 }

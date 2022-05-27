@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: filipe <filipe@student.42.fr>              +#+  +:+       +#+         #
+#    By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/16 11:27:28 by fialexan          #+#    #+#              #
-#    Updated: 2022/05/23 08:13:13 by filipe           ###   ########.fr        #
+#    Updated: 2022/05/27 13:24:51 by fialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SCRS = push_swap.c stack_operations.c stack_init.c input_checker.c \
 	check_sort.c push.c reverse_rotate.c rotate.c small_numbers.c \
-	solver.c swap.c solver_utils.c
+	solver.c swap.c solver_utils.c radix_sort.c
 
 OBJS = $(SCRS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:25 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/24 14:34:40 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/27 13:42:43 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,4 @@ long int	long_atoi(const char *str)
 		x++;
 	}
 	return (a * sinal);
-} 
+}
