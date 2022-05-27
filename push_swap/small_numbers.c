@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 11:22:56 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/26 15:13:43 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/27 12:14:27 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,34 +77,40 @@ void	solve_4(t_stack **stack_a, t_stack **stack_b)
 void	solve_5(t_stack **stack_a, t_stack **stack_b)
 {
 	int		position;
-	int		size;
 
 	pb(stack_a, stack_b);
 	solve_4(stack_a, stack_b);
 	position = get_position_order(stack_a, (*stack_b)->order);
-	size = stack_size(stack_a);
-	if (position > size / 2)
-	{
-		r_rotate_x_times(stack_a, size - position, 1);
+	if (position == 0)
 		pa(stack_a, stack_b);
+	else if (position == 1)
+	{
+		pa(stack_a, stack_b);
+		sa(stack_a);
+	}
+	else if (position == 2)
+	{
+		ra(stack_a);
+		pa(stack_a, stack_b);
+		sa(stack_a);
+		rra(stack_a);
 	}
 	else
-	{
-		rotate_x_times(stack_a, position, 1);
-		pa(stack_a, stack_b);
-	}
-	solve_5_put_in_order(stack_a);
+		solve_5_put_in_order(stack_a, stack_b, position);
 }
 
-void	solve_5_put_in_order(t_stack **stack)
+void	solve_5_put_in_order(t_stack **stack_a, t_stack **stack_b, int pos)
 {
-	int	position;
-	int	size;
-
-	position = get_position(stack, 0);
-	size = stack_size(stack);
-	if (position > size / 2)
-		r_rotate_x_times(stack, size - position , 1);
+	if (pos == 3)
+	{
+		rra(stack_a);
+		pa(stack_a, stack_b);
+		ra(stack_a);
+		ra(stack_a);
+	}
 	else
-		rotate_x_times(stack, position, 1);
+	{
+		pa(stack_a, stack_b);
+		ra(stack_a);
+	}
 }

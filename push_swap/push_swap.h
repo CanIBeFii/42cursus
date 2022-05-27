@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:21 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/26 15:08:49 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/27 12:33:05 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int			check_int(int *nums, int index, char *str);
 int			*get_order(int *nums, int argc);
 
 t_stack		*init_stack(int *nums, int *nums_order, int argc);
+void		free_stack(t_stack **stack);
 
 t_stack		*stacklast(t_stack *stack);
 t_stack		*stackbefore_last(t_stack *stack);
@@ -71,6 +72,6 @@ void		solve_2(t_stack **stack_a);
 void		solve_3(t_stack **stack_a);
 void		solve_4(t_stack **stack_a, t_stack **stack_b);
 void		solve_5(t_stack	**stack_a, t_stack **stack_b);
-void		solve_5_put_in_order(t_stack **stack);
+void	solve_5_put_in_order(t_stack **stack_a, t_stack **stack_b, int pos);
 
 #endif

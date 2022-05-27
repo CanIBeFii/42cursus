@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 17:46:31 by filipe            #+#    #+#             */
-/*   Updated: 2022/05/26 11:35:31 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/27 12:35:49 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	stack_a = init_stack(nums, nums_order, argc);
+	free(nums);
+	free(nums_order);
 	solver(&stack_a, argc - 1);
+	free_stack(&stack_a);
 	return (0);
 }
 
