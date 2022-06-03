@@ -6,7 +6,7 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:42:50 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/30 14:16:39 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/31 11:32:18 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+# define BUFFER_SIZE 1
 
 typedef struct s_list
 {
