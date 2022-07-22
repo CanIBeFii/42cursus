@@ -6,7 +6,7 @@
 /*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:42:50 by fialexan          #+#    #+#             */
-/*   Updated: 2022/07/22 17:05:28 by filipe           ###   ########.fr       */
+/*   Updated: 2022/07/22 17:14:37 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+
+# define BUFFER_SIZE 1
 
 typedef struct s_list
 {

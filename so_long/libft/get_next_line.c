@@ -6,11 +6,11 @@
 /*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 12:26:23 by fialexan          #+#    #+#             */
-/*   Updated: 2022/04/28 13:58:21 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/05/31 11:57:11 by fialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*get_next_line(int fd)
 {
