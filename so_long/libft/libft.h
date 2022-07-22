@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fialexan <fialexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:42:50 by fialexan          #+#    #+#             */
-/*   Updated: 2022/05/30 14:16:39 by fialexan         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:05:28 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -66,10 +67,28 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+//get_next_line
 char	*get_after_nl(char *s);
 char	*get_before_nl(char *s);
 char	*find_new_line(char *str, int fd);
 char	*ft_read(int fd);
 char	*get_next_line(int fd);
 
+//ft_printf
+int		ft_printf(const char *str, ...);
+int		valid_format(char c);
+int		ft_convert_hex(unsigned long arg, int state);
+int		printf_decoder(char c, va_list args);
+int		print_format(char c, va_list args);
+int		format_c(va_list args);
+int		format_s(va_list args);
+int		format_p(va_list args);
+int		format_d(va_list args);
+int		format_i(va_list args);
+int		format_u(va_list args);
+int		format_x_small(va_list args);
+int		format_x_big(va_list args);
+int		ft_uitoa(unsigned int num);
+int		ft_hex_len(unsigned long num);
+int		ft_get_int_size(unsigned int num);
 #endif
